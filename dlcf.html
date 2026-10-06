@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>IMSU DLCF Alumni Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="brand">
+    <div class="logo-container"><img class="logo" src="dlcf-logo.jpg" alt="DLCF Logo"></div>
+    <div><b>IMSU DLCF</b><small>Imo State University</small></div>
+  </div>
+  <nav id="nav">
+    <a href="#/home" data-view="home">Home</a>
+    <a href="#/about" data-view="about">About</a>
+    <a href="#/announcements" data-view="announcements">Announcements</a>
+    <a href="#/fellowships" data-view="fellowships">Fellowships</a>
+    <a href="#/leadership" data-view="leadership">Leadership</a>
+    <a href="#/directory" data-view="directory">Directory</a>
+    <a href="#/contact" data-view="contact">Contact</a>
+    <a href="#/login" data-view="login" id="nav-login">Login</a>
+    <a href="#/account" data-view="account" id="nav-account" hidden>My Account</a>
+    <a href="#/admin" data-view="admin">Admin Portal</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ HOME ============ -->
+  <section class="view" id="view-home" hidden>
+    <div class="hero">
+      <small>IMO STATE UNIVERSITY · OWERRI</small>
+      <h1>Deeper Life Campus Fellowship</h1>
+      <p>Alumni Network</p>
+      <div id="hero-cta">
+        <a class="btn g" href="#/register">Join the alumni directory</a>
+        <a class="btn o" href="#/login">Login</a>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card nv"><h3>Our Mission</h3><p data-site="mission"></p></div>
+      <div class="card bk"><h3>Our Vision</h3><p data-site="vision"></p></div>
+    </div>
+    <div class="card">
+      <span class="tag">Latest</span>
+      <h3>Announcement</h3>
+      <div id="home-ann" hidden>
+        <b id="home-ann-title"></b> <span class="mu" id="home-ann-date"></span><br>
+        <a href="#/announcements">See all announcements →</a>
+      </div>
+      <span class="mu" id="home-ann-none">No announcements yet.</span>
+    </div>
+  </section>
+
+  <!-- ============ DIRECTORY ============ -->
+  <section class="view" id="view-directory" hidden>
+    <h2>Alumni Directory</h2>
+    <p class="mu">Imo State University alumni of the fellowship, grouped by set (graduation year).</p>
+    <div class="tabs" id="dir-tabs"></div>
+    <p class="mu" id="dir-count"></p>
+    <div class="grid" id="dir-list"></div>
+    <p class="mu" id="dir-list-empty" hidden>No alumni registered in this set yet.</p>
+  </section>
+
+  <!-- ============ ANNOUNCEMENTS ============ -->
+  <section class="view" id="view-announcements" hidden>
+    <h2>Announcements</h2>
+    <div id="ann-list"></div>
+    <p class="mu" id="ann-list-empty" hidden>No programs announced yet.</p>
+  </section>
+
+  <!-- ============ FELLOWSHIPS ============ -->
+  <section class="view" id="view-fellowships" hidden>
+    <h2>The Fellowship at IMSU</h2>
+    <div id="fel-list"></div>
+  </section>
+
+  <!-- ============ LEADERSHIP ============ -->
+  <section class="view" id="view-leadership" hidden>
+    <h2>DLCF Leadership</h2>
+    <div class="grid" id="lead-list"></div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="view" id="view-about" hidden>
+    <h2>About DLCF</h2>
+    <div class="card"><p class="pre" data-site="about"></p></div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="view" id="view-contact" hidden>
+    <h2>Contact Us</h2>
+    <div class="card">
+      <p>✉ <span data-site="email"></span><br>
+         ☎ <span data-site="phone"></span><br>
+         📍 <span data-site="address"></span></p>
+    </div>
+    <div class="card">
+      <h3>Send a message</h3>
+      <form data-form="contact">
+        <label for="contact-name">Name</label><input id="contact-name">
+        <label for="contact-msg">Message</label><textarea id="contact-msg" rows="4"></textarea>
+        <button type="submit">Send</button>
+        <p class="mu">Demo only: messages are not transmitted anywhere yet.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ LOGIN ============ -->
+  <section class="view" id="view-login" hidden>
+    <h2>Alumni Login</h2>
+    <div class="card">
+      <form data-form="login">
+        <label for="login-email">Email</label><input id="login-email" type="email" required>
+        <label for="login-pw">Password</label><input id="login-pw" type="password" required>
+        <button type="submit">Login</button> &nbsp;<a href="#/register">Create account</a>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ REGISTER ============ -->
+  <section class="view" id="view-register" hidden>
+    <h2>Create Alumni Account</h2>
+    <div class="card">
+      <form data-form="register">
+        <div class="r2">
+          <div><label for="reg-name">Full name</label><input id="reg-name" required></div>
+          <div><label for="reg-phone">Phone</label><input id="reg-phone"></div>
+          <div><label for="reg-email">Email</label><input id="reg-email" type="email" required></div>
+          <div><label for="reg-pw">Password</label><input id="reg-pw" type="password" required></div>
+        </div>
+        <label for="reg-year">Set / year of graduation (IMSU)</label>
+        <input id="reg-year" type="number" min="1980" max="2100" placeholder="e.g. 2018" required>
+        <label for="reg-job">Current job status</label>
+        <input id="reg-job" placeholder="e.g. Software Engineer at XYZ / Student / Seeking work">
+        <label for="reg-photo">Photo</label>
+        <input id="reg-photo" type="file" accept="image/*">
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ MY ACCOUNT ============ -->
+  <section class="view" id="view-account" hidden>
+    <h2>My Account</h2>
+    <div class="card">
+      <img class="av" id="acc-img" alt="" hidden>
+      <div class="av" id="acc-initial"></div>
+      <form data-form="account">
+        <div class="r2">
+          <div><label for="acc-name">Full name</label><input id="acc-name" required></div>
+          <div><label for="acc-phone">Phone</label><input id="acc-phone"></div>
+        </div>
+        <label for="acc-job">Current job status</label><input id="acc-job">
+        <label for="acc-photo">Change photo</label><input id="acc-photo" type="file" accept="image/*">
+        <button type="submit">Save</button>
+        <button type="button" class="s" data-action="logout">Logout</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ ADMIN ============ -->
+  <section class="view" id="view-admin" hidden>
+
+    <div id="admin-login" hidden>
+      <h2>Admin Portal</h2>
+      <div class="card">
+        <form data-form="adminLogin">
+          <label for="admin-pw">Admin password</label><input id="admin-pw" type="password" required>
+          <button type="submit">Enter</button>
+          <p class="note">Default password: admin123 (change it under Site Content).</p>
+        </form>
+      </div>
+    </div>
+
+    <div id="admin-panel" hidden>
+      <h2>Admin Portal <button class="s" data-action="logout">Logout</button></h2>
+      <div class="tabs">
+        <button data-action="adminTab" data-tab="inv">Inventory</button>
+        <button data-action="adminTab" data-tab="ann">Announcements</button>
+        <button data-action="adminTab" data-tab="site">Site Content</button>
+        <button data-action="adminTab" data-tab="lead">Leadership</button>
+        <button data-action="adminTab" data-tab="fel">Fellowship Info</button>
+      </div>
+
+      <!-- Inventory -->
+      <div class="admin-tab" id="tab-inv" hidden>
+        <div class="stat">
+          <div class="mu">Total<br><b id="stat-total"></b></div>
+          <div class="mu">Welfare<br><b id="stat-welfare"></b></div>
+          <div class="mu">Projects<br><b id="stat-project"></b></div>
+        </div>
+        <div class="card">
+          <h3>Record contribution / payment</h3>
+          <form data-form="inv">
+            <div class="r2">
+              <div><label for="inv-who">Alumnus (contributor)</label><input id="inv-who" list="inv-users" required><datalist id="inv-users"></datalist></div>
+              <div><label for="inv-amt">Amount (₦)</label><input id="inv-amt" type="number" min="0" required></div>
+              <div><label for="inv-cat">Category</label><select id="inv-cat"><option>Welfare</option><option>Project</option></select></div>
+              <div><label for="inv-type">Type</label><select id="inv-type"><option>Contribution</option><option>Payment</option></select></div>
+              <div><label for="inv-to">Beneficiary / Project name</label><input id="inv-to"></div>
+              <div><label for="inv-date">Date</label><input id="inv-date" type="date"></div>
+            </div>
+            <label for="inv-note">Note</label><input id="inv-note">
+            <button type="submit">Add record</button>
+          </form>
+        </div>
+        <div class="card">
+          <label for="inv-filter">Filter</label>
+          <select id="inv-filter"><option value="">All</option><option>Welfare</option><option>Project</option></select>
+          <div class="tw">
+            <table>
+              <thead><tr><th>Date</th><th>Alumnus</th><th>Type</th><th>Category</th><th>For</th><th>Amount</th><th>Note</th><th></th></tr></thead>
+              <tbody id="inv-body"></tbody>
+            </table>
+          </div>
+          <p class="mu" id="inv-body-empty" hidden>No records.</p>
+          <p><b>Shown total: <span id="inv-shown"></span></b> &nbsp;<button class="s" data-action="csv">Export CSV</button></p>
+        </div>
+      </div>
+
+      <!-- Announcements -->
+      <div class="admin-tab" id="tab-ann" hidden>
+        <div class="card">
+          <h3>New announcement</h3>
+          <form data-form="ann">
+            <label for="ann-title">Program title</label><input id="ann-title" required>
+            <div class="r2">
+              <div><label for="ann-date">Date</label><input id="ann-date" type="date"></div>
+              <div><label for="ann-venue">Venue</label><input id="ann-venue"></div>
+            </div>
+            <label for="ann-body">Details</label><textarea id="ann-body" rows="3"></textarea>
+            <label for="ann-flyer">Flyer image</label><input id="ann-flyer" type="file" accept="image/*">
+            <button type="submit">Publish</button>
+          </form>
+        </div>
+        <div id="admin-ann-list"></div>
+      </div>
+
+      <!-- Site content -->
+      <div class="admin-tab" id="tab-site" hidden>
+        <div class="card">
+          <form data-form="site">
+            <label for="site-mission">Mission</label><textarea id="site-mission" rows="3"></textarea>
+            <label for="site-vision">Vision</label><textarea id="site-vision" rows="3"></textarea>
+            <label for="site-about">About</label><textarea id="site-about" rows="5"></textarea>
+            <div class="r2">
+              <div><label for="site-email">Email</label><input id="site-email"></div>
+              <div><label for="site-phone">Phone</label><input id="site-phone"></div>
+            </div>
+            <label for="site-address">Address</label><input id="site-address">
+            <label for="site-pw">New admin password (optional)</label><input id="site-pw" type="password">
+            <button type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Leadership -->
+      <div class="admin-tab" id="tab-lead" hidden>
+        <div class="card">
+          <h3>Add leader</h3>
+          <form data-form="lead">
+            <div class="r2">
+              <div><label for="lead-name">Name</label><input id="lead-name" required></div>
+              <div><label for="lead-role">Role</label><input id="lead-role"></div>
+            </div>
+            <label for="lead-photo">Photo</label><input id="lead-photo" type="file" accept="image/*">
+            <button type="submit">Add</button>
+          </form>
+        </div>
+        <div id="admin-lead-list"></div>
+      </div>
+
+      <!-- Fellowship info -->
+      <div class="admin-tab" id="tab-fel" hidden>
+        <div class="card">
+          <h3>Add fellowship section</h3>
+          <form data-form="fel">
+            <div class="r2">
+              <div><label for="fel-title">Title</label><input id="fel-title" required></div>
+              <div><label for="fel-short">Short name</label><input id="fel-short"></div>
+              <div><label for="fel-meets">Meeting times</label><input id="fel-meets"></div>
+              <div><label for="fel-venue">Venue</label><input id="fel-venue"></div>
+            </div>
+            <label for="fel-desc">Description</label><textarea id="fel-desc" rows="3"></textarea>
+            <label for="fel-contact">Contact</label><input id="fel-contact">
+            <button type="submit">Add</button>
+          </form>
+        </div>
+        <div id="admin-fel-list"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© Deeper Life Campus Fellowship · Imo State University Alumni</footer>
+
+<!-- ============ TEMPLATES (repeated pieces, filled in by app.js) ============ -->
+
+<template id="tpl-dirtab"><button data-f="label"></button></template>
+
+<template id="tpl-alumnus">
+  <div class="card">
+    <img class="av" data-img="photo" data-show="hasPhoto" alt="">
+    <div class="av" data-f="initial" data-show="noPhoto"></div>
+    <div class="tag" data-f="setLabel" data-show="yr"></div>
+    <h3 data-f="name"></h3>
+    <div class="mu" data-f="phoneLine"></div>
+    <div data-f="jobLine"></div>
+  </div>
+</template>
+
+<template id="tpl-ann">
+  <div class="card">
+    <h3 data-f="title"></h3>
+    <div class="mu" data-f="dateLine"></div>
+    <p data-f="body"></p>
+    <img class="flyer" data-img="flyer" data-show="flyer" alt="Event flyer">
+  </div>
+</template>
+
+<template id="tpl-fel">
+  <div class="card">
+    <h3 data-f="heading"></h3>
+    <p data-f="desc"></p>
+    <div class="mu">
+      <div data-f="meetsLine"></div>
+      <div data-f="venueLine"></div>
+      <div data-f="contactLine"></div>
+    </div>
+  </div>
+</template>
+
+<template id="tpl-leader">
+  <div class="card">
+    <img class="av" data-img="photo" data-show="hasPhoto" alt="">
+    <div class="av" data-f="initial" data-show="noPhoto"></div>
+    <h3 data-f="name"></h3>
+    <div class="mu" data-f="role"></div>
+  </div>
+</template>
+
+<template id="tpl-inv">
+  <tr>
+    <td data-f="date"></td><td data-f="who"></td><td data-f="type"></td><td data-f="cat"></td>
+    <td data-f="to"></td><td data-f="amtText"></td><td data-f="note"></td>
+    <td><button class="d" data-action="del" data-k="inv" data-id>✕</button></td>
+  </tr>
+</template>
+
+<template id="tpl-admin-ann">
+  <div class="card"><b data-f="title"></b> <span class="mu" data-f="date"></span>
+    <button class="d" data-action="del" data-k="ann" data-id>Delete</button></div>
+</template>
+
+<template id="tpl-admin-lead">
+  <div class="card"><span data-f="label"></span>
+    <button class="d" data-action="del" data-k="leaders" data-id>Remove</button></div>
+</template>
+
+<template id="tpl-admin-fel">
+  <div class="card"><span data-f="uni"></span>
+    <button class="s" data-action="editFel" data-id>Edit details</button>
+    <button class="d" data-action="del" data-k="fells" data-id>Remove</button></div>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>
