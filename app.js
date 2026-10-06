@@ -57,8 +57,9 @@ const DEFAULT_DB = {
   adminPass: 'admin123',
   users: [], ann: [], inv: [],
   site: {
-    mission: 'Edit this: To raise godly leaders and nurture Imo State University alumni who serve God and humanity wherever they are.',
-    vision: 'Edit this: A united IMSU alumni family impacting our communities and nation for Christ.',
+    mission: 'To raise godly leaders and nurture Imo State University alumni who serve God and humanity wherever they are.',
+    vision: 'A united IMSU alumni family impacting our communities and nation for Christ.',
+    commitment: 'We are committed to standing firmly on biblical teachings without negotiation or cultural compromise.',
     about: 'Edit this: This is the alumni portal of the Deeper Life Campus Fellowship (DLCF), Imo State University (IMSU), Owerri. Tell the story of the fellowship, its history and core values here.',
     email: 'info@dlcf.example',
     phone: '+234 000 000 0000',
